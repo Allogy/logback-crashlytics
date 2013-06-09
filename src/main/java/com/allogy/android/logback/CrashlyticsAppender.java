@@ -21,6 +21,25 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.AppenderBase;
 import com.crashlytics.android.Crashlytics;
 
+/**
+ * The CrashlyticsAppender appends logback log events to the Crashlytics
+ * logging system. Instances of this appender must set a pattern encoder.
+ * The CrashlyticsAppender does not attempt to start Crashlytics; that is
+ * the responsibility of your app.
+ * <p>
+ * <pre>
+ * {@code
+ * <appender name="crashlytics" class="com.allogy.android.logback.CrashlyticsAppender">
+ *   <encoder>
+ *     <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg</pattern>
+ *   </encoder>
+ * </appender>
+ * }
+ * </pre>
+ *
+ * @since 1.0
+ * @author David Venable
+ */
 public class CrashlyticsAppender extends AppenderBase<ILoggingEvent>
 {
     private PatternLayoutEncoder encoder;
