@@ -21,7 +21,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <name>Logback Crashlytics</name>
-    <groupId>com.allogy.android.logback</groupId>
+    <groupId>com.allogy.android</groupId>
     <artifactId>logback-crashlytics</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
