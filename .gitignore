@@ -3,3 +3,7 @@
 target
 pom.xml.*
 release.properties
+build
+.gradle
+local.properties
+.DS_Store
