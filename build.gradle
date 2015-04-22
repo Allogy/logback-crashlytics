@@ -28,6 +28,10 @@ android {
         versionCode 1
         versionName version
     }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
 }
 
 dependencies {
