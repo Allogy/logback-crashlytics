@@ -9,6 +9,9 @@ buildscript {
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+project.group = 'com.allogy.android'
 
 repositories {
     mavenCentral()
@@ -48,5 +51,44 @@ android.libraryVariants.all { variant ->
         }
         exclude '**/BuildConfig.java'
         exclude '**/R.java'
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+
+                name 'Logback Crashlytics'
+                description 'Provides a logback appender to log to Crashlytics.'
+                url 'https://github.com/Allogy/logback-crashlytics'
+
+                organization {
+                    name 'Allogy Interactive LLC'
+                    url 'http://www.allogy.com'
+                }
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        comments 'Copyright 2013 Allogy Interactive LLC.'
+                    }
+                }
+                scm {
+                    connection 'scm:git:git@github.com:Allogy/logback-crashlytics.git'
+                    developerConnection 'scm:git:git@github.com:Allogy/logback-crashlytics.git'
+                    url 'https://github.com/Allogy/logback-crashlytics'
+
+                }
+                developers {
+                    developer {
+                        id 'dvenable'
+                        name 'David Venable'
+                        email 'dvenable@allogy.com'
+                    }
+                }
+            }
+        }
     }
 }
