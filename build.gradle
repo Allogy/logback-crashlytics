@@ -41,7 +41,11 @@ dependencies {
 }
 
 android.libraryVariants.all { variant ->
-    task("generate${variant.name.capitalize()}Javadoc", type: Javadoc) {
+
+    def javadocName = "generate${variant.name.capitalize()}Javadoc"
+    def javadocJarName = "package${variant.name.capitalize()}JavadocJar"
+
+    task(javadocName, type: Javadoc) {
         title = 'Logback Crashlytics'
         source = variant.javaCompile.source
         classpath = files(variant.javaCompile.classpath.files, project.android.getBootClasspath())
@@ -52,6 +56,25 @@ android.libraryVariants.all { variant ->
         exclude '**/BuildConfig.java'
         exclude '**/R.java'
     }
+
+    task(javadocJarName, type: Jar, dependsOn: javadocName) {
+        classifier = 'javadoc'
+        from tasks.getByName(javadocName).destinationDir
+    }
+
+    artifacts {
+        if(variant.name == 'release')
+            archives tasks.getByName(javadocJarName)
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+artifacts {
+    archives sourcesJar
 }
 
 install {
