@@ -26,7 +26,7 @@ import com.crashlytics.android.Crashlytics;
  * logging system. Instances of this appender must set a pattern encoder.
  * The CrashlyticsAppender does not attempt to start Crashlytics; that is
  * the responsibility of your app.
- * <p>
+ * <br>
  * <pre>
  * {@code
  * <appender name="crashlytics" class="com.allogy.android.logback.CrashlyticsAppender">
